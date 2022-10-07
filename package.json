@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "pkg sync.js -o .bin/gsheet-helper",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
