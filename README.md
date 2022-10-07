@@ -1,4 +1,4 @@
-# google-sheet
+# gsheet-helper
 
 ### gsheet.config.js example
 
