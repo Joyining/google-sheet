@@ -4,7 +4,7 @@ const fs = require('fs');
 const currentPath = process.argv[0];
 const args = process.argv.slice(2);
 const configFileName = args[0] ?? 'gsheet.config.js';
-const config = require(`${currentPath}/../../${configFileName}`);
+const config = require(`${currentPath}/../../../../../${configFileName}`);
 
 const docID = config?.docID;
 const sheetID = config?.sheetID;
