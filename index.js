@@ -24,7 +24,6 @@ const getJoinedObject = async({
   valueColumns = [],
 }) => {
   if(!docID || !sheetID || !credentialsPath) return;
-  console.log(credentialsPath)
   const rows = await getRows({
     docID,
     sheetID,
@@ -36,7 +35,6 @@ const getJoinedObject = async({
     const value = valueColumns.reduce((acc, v) => acc += row[v], '');
     result[`${prefix}${key}`] = value;
   }
-  console.log(result);
   return result;
 }
 

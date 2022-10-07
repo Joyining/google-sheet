@@ -2,14 +2,15 @@ const { getJoinedObject } = require('./index.js');
 const fs = require('fs')
 
 const args = process.argv.slice(2)
+const config = require(args[0])
 
-const docID = args[0];
-const sheetID = args[1];
-const credentialsPath = args[2];
-const prefix = args[3];
-const keyColumns = JSON.parse(args[4]);
-const valueColumns = JSON.parse(args[5]);
-const filePath = args[6];
+const docID = config?.docID;
+const sheetID = config?.sheetID;
+const credentialsPath = config?.credentialsPath;
+const prefix = config?.prefix;
+const keyColumns = config?.keyColumns;
+const valueColumns = config?.valueColumns;
+const filePath = config?.filePath;
 
 (async() => {
   if(!filePath) return
