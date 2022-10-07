@@ -1,0 +1,16 @@
+{
+  "name": "@joyining/google-sheet-helper",
+  "version": "1.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sync:en": "node sync '14aMHktTsbm8f6n8RiyuhJz7nKiIVJkQCbPTSDg-1jbE' '0' './credentials_kklab.json' '__' '[\"page\",\"key\"]' '[\"en\"]' 'en.json'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "google-spreadsheet": "^3.3.0"
+  }
+}
