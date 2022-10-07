@@ -8,7 +8,7 @@ const config = require(`${currentPath}/../../../../../${configFileName}`);
 
 const docID = config?.docID;
 const sheetID = config?.sheetID;
-const credentialsPath = config?.credentialsPath ? `${currentPath}/../../${config.credentialsPath}` : `${currentPath}/../../credentials.json`;
+const credentialsPath = config?.credentialsPath ? `${currentPath}/../../../../../${config.credentialsPath}` : `${currentPath}/../../../../../credentials.json`;
 const prefix = config?.prefix;
 const keyColumns = config?.keyColumns;
 const valueColumns = config?.valueColumns;
