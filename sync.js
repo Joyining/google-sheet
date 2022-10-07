@@ -1,5 +1,5 @@
-const { getJoinedObject } = require('./index.js');
 const fs = require('fs');
+const { getJoinedObject } = require('.');
 
 const currentPath = process.argv[0];
 const args = process.argv.slice(2);
@@ -14,12 +14,12 @@ const keyColumns = config?.keyColumns;
 const valueColumns = config?.valueColumns;
 const filePath = config?.filePath;
 
-(async() => {
-  if(!filePath) return;
+(async () => {
+  if (!filePath) return;
   const data = await getJoinedObject({
     docID,
     sheetID,
-    credentialsPath, 
+    credentialsPath,
     prefix,
     keyColumns,
     valueColumns,
@@ -28,4 +28,3 @@ const filePath = config?.filePath;
     console.error(error);
   });
 })();
-
