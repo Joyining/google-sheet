@@ -13,6 +13,9 @@
   "dependencies": {
     "google-spreadsheet": "^3.3.0"
   },
+  "devDependencies": {
+    "pkg": "^5.8.0"
+  },
   "bin": {
     "gsheet-helper": "./.bin/gsheet-helper"
   },
