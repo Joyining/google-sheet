@@ -3,9 +3,9 @@ const { GoogleSpreadsheet } = require('google-spreadsheet');
 const getRows = async ({
   docID,
   sheetID,
-  credentialsPath
+  credentialsPath,
 }) => {
-  if(!docID || !sheetID || !credentialsPath) return;
+  if (!docID || !sheetID || !credentialsPath) return null;
   const doc = new GoogleSpreadsheet(docID);
   const credential = require(credentialsPath);
   await doc.useServiceAccountAuth(credential);
@@ -15,7 +15,7 @@ const getRows = async ({
   return rows;
 };
 
-const getJoinedObject = async({
+const getJoinedObject = async ({
   docID = '',
   sheetID = '',
   credentialsPath = '',
@@ -23,20 +23,20 @@ const getJoinedObject = async({
   keyColumns = [],
   valueColumns = [],
 }) => {
-  if(!docID || !sheetID || !credentialsPath) return;
+  if (!docID || !sheetID || !credentialsPath) return null;
   const rows = await getRows({
     docID,
     sheetID,
-    credentialsPath, 
+    credentialsPath,
   });
   const result = {};
-  for (row of rows) {
+  for (const row of rows) {
     const key = keyColumns.reduce((acc, k) => acc += row[k], '');
     const value = valueColumns.reduce((acc, v) => acc += row[v], '');
     result[`${prefix}${key}`] = value;
   }
   return result;
-}
+};
 
 module.exports = {
   getRows,
