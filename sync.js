@@ -9,22 +9,20 @@ const config = require(`${currentPath}/../../../../../${configFileName}`);
 const docID = config?.docID;
 const sheetID = config?.sheetID;
 const credentialsPath = config?.credentialsPath ? `${currentPath}/../../../../../${config.credentialsPath}` : `${currentPath}/../../../../../credentials.json`;
-const prefix = config?.prefix;
-const keyColumns = config?.keyColumns;
-const valueColumns = config?.valueColumns;
-const filePath = config?.filePath;
+const files = config?.files ?? [];
 
-(async () => {
-  if (!filePath) return;
+(files.forEach(async (file) => {
+  if (!file.filePath) return;
   const data = await getJoinedObject({
     docID,
     sheetID,
     credentialsPath,
-    prefix,
-    keyColumns,
-    valueColumns,
+    prefix: file.prefix,
+    keyColumns: file.keyColumns,
+    valueColumns: file.valueColumns,
   });
-  fs.writeFile(filePath, JSON.stringify(data), (error) => {
+  fs.writeFile(file.filePath, JSON.stringify(data), (error) => {
     console.error(error);
   });
-})();
+})
+)();
