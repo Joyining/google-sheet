@@ -23,6 +23,7 @@ files.forEach(async (file) => {
   });
   const content = `${JSON.stringify(data, null, 2)}\n`;
   fs.writeFile(file.filePath, content, (error) => {
-    console.error(error);
+    if (error) throw error;
+    console.log(`Successfully generate ${file.filePath} !`);
   });
 });
