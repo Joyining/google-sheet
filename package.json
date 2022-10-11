@@ -14,13 +14,11 @@
     "google-spreadsheet": "^3.3.0"
   },
   "devDependencies": {
-    "pkg": "^5.8.0"
+    "pkg": "^5.8.0",
+    "eslint": "^8.24.0",
+    "eslint-config-airbnb": "^19.0.4"
   },
   "bin": {
     "gsheet-helper": "./.bin/gsheet-helper"
-  },
-  "devDependencies": {
-    "eslint": "^8.24.0",
-    "eslint-config-airbnb": "^19.0.4"
   }
 }
