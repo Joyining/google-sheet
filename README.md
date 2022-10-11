@@ -4,12 +4,12 @@ gsheet-helper generates multiple json files based on your Google sheets. It help
 
 ## Installation
 ```
-npm i gsheet-helper --save-dev
+npm i @joyining/gsheet-helper --save-dev
 ```
 
 ## Usage from command line
 
-1. create a `gsheet.config.js` under root folder, following the below example:
+Create a `gsheet.config.js` under root folder, following the below example:
 
 ```javaScript
 module.exports = {
@@ -44,38 +44,41 @@ module.exports = {
 | valueColumns     | optional, the columns to concatenate value, default is empty string.                                                                         |
 | filePath         | required, the path and file name for the generated file.                                                                                     |
 
-2. Custom a script in `package.json`:
+
+Custom a script in `package.json`:
 
 ```json
 "scripts": {
-    "sync": "gsheet-helper"
-  },
+  "sync": "gsheet-helper"
+},
 ```
 
 gsheet-helper will take `gsheet.config.js` under root folder as the default config. If your config is not named as `gsheet.config.js`, please specify the file name in the command, for example:
 
 ```json
 "scripts": {
-    "sync": "gsheet-helper my.gsheet.config.js"
-  },
+  "sync": "gsheet-helper my.gsheet.config.js"
+},
 ```
 
-3. Run script and check if json files are generated.
+Run script and check if json files are generated.
+
 ```
 npm run sync
 ```
-
 
 ## Examples
 
 ### Input
 
-You have a 2-column Google sheet containing students' name and gender:
-| name     | gender     |
-| -------- | ---------- |
-| John     | male       |
-| Alex     | male       |
-| Judy     | female     |
+You have a 3-column Google sheet containing translations for some words:
+| en       | zh      | ja             |
+| -------- | ------- | -------------- |
+| Engineer | 工程師   | エンジニア       |
+| Homepage | 首頁     | ホームページ     |
+| Frontend | 前端     | フロントエンド   |
+| Backend  | 後端     | バックエンド     |
+
 
 ```javaScript
 // gsheet.config.js
@@ -86,9 +89,15 @@ module.exports = {
   files: [
     {
       prefix: '_',
-      keyColumns: ['name'],
-      valueColumns: ['gender'],
-      filePath: 'students.json'
+      keyColumns: ['en'],
+      valueColumns: ['zh'],
+      filePath: 'zh.json'
+    },
+    {
+      prefix: '_',
+      keyColumns: ['en'],
+      valueColumns: ['ja'],
+      filePath: 'ja.json'
     },
   ]
 }
@@ -96,11 +105,23 @@ module.exports = {
 
 ### Output
 
-```json
-// students.json
+Two json files:
+
+```
+// zh.json
 {
-  "_John": "male",
-  "_Alex": "male",
-  "_Judy": "female",
+  "_Engineer": "工程師",
+  "_Homepage": "首頁",
+  "_Frontend": "前端",
+  "_Backend": "後端"
 }
 ```
+
+```
+// ja.json
+{
+  "_Engineer": "エンジニア",
+  "_Homepage": "ホームページ",
+  "_Frontend": "フロントエンド",
+  "_Backend": "バックエンド"
+}

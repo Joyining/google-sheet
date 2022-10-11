@@ -11,7 +11,7 @@ const sheetID = config?.sheetID;
 const credentialsPath = config?.credentialsPath ? `${currentPath}/../../../../../${config.credentialsPath}` : `${currentPath}/../../../../../credentials.json`;
 const files = config?.files ?? [];
 
-(files.forEach(async (file) => {
+files.forEach(async (file) => {
   if (!file.filePath) return;
   const data = await getJoinedObject({
     docID,
@@ -24,5 +24,4 @@ const files = config?.files ?? [];
   fs.writeFile(file.filePath, JSON.stringify(data), (error) => {
     console.error(error);
   });
-})
-)();
+});
