@@ -21,7 +21,8 @@ files.forEach(async (file) => {
     keyColumns: file.keyColumns,
     valueColumns: file.valueColumns,
   });
-  fs.writeFile(file.filePath, JSON.stringify(data), (error) => {
+  const content = `${JSON.stringify(data, null, 2)}\n`;
+  fs.writeFile(file.filePath, content, (error) => {
     console.error(error);
   });
 });
