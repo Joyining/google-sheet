@@ -14,30 +14,35 @@ Create a `gsheet.config.js` under root folder, following the below example:
 ```javaScript
 module.exports = {
   docID: '',
-  sheetID: '',
   credentialsPath: '',
-  files: [
+  sheets: [
     {
-      prefix: '',
-      keyColumns: [],
-      valueColumns: [],
-      filePath: ''
+      sheetID: '',
+      files: [
+        {
+          prefix: '',
+          keyColumns: [],
+          valueColumns: [],
+          filePath: ''
+        },
+        {
+          prefix: '',
+          keyColumns: [],
+          valueColumns: [],
+          filePath: ''
+        },
+      ],
     },
-    {
-      prefix: '',
-      keyColumns: [],
-      valueColumns: [],
-      filePath: ''
-    }
-  ]
+  ],
 }
 ```
 
 | Key              | Description |
 | ---------------- | -------- |
 | docID            | required, Google sheet document ID.                                                                                                          |
-| sheetID          | required, Google sheet sheet ID.                                                                                                             |
 | credentialsPath  | optional, the path for credential to access the Google sheet. It takes `credentials.json` under root folder as the default credential path.  |
+| sheets           | required, specify the target sheets.                                                                                                             |
+| sheetID          | required, Google sheet sheet ID.                                                                                                             |
 | files            | required, specify expected results.                                                                                                          |
 | prefix           | optional, the prefix before key string, default is empty string.                                                                             |
 | keyColumns       | required, the columns to concatenate key.                                                                                                    |
@@ -84,22 +89,26 @@ You have a 3-column Google sheet containing translations for some words:
 // gsheet.config.js
 module.exports = {
   docID: 'XXXXX',
-  sheetID: 'YYYYY',
   credentialsPath: 'myCredential.json',
-  files: [
+  sheets: [
     {
-      prefix: '_',
-      keyColumns: ['en'],
-      valueColumns: ['zh'],
-      filePath: 'zh.json'
+      sheetID: 'YYYYY',
+      files: [
+        {
+          prefix: '_',
+          keyColumns: ['en'],
+          valueColumns: ['zh'],
+          filePath: 'zh.json'
+        },
+        {
+          prefix: '_',
+          keyColumns: ['en'],
+          valueColumns: ['ja'],
+          filePath: 'ja.json'
+        },
+      ],
     },
-    {
-      prefix: '_',
-      keyColumns: ['en'],
-      valueColumns: ['ja'],
-      filePath: 'ja.json'
-    },
-  ]
+  ],
 }
 ```
 
